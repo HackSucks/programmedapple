@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bad Apple in Pure HTML</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: monospace;
+      white-space: pre;
+      font-size: 8px;
+    }
+    #frame {
+      line-height: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<pre id="frame">Loading...</pre>
+<audio id="audio" src="bad_apple.mp3" controls autoplay></audio>
+
+<script src="frames.js"></script>
+<script>
+const fps = 10;
+const delay = 1000 / fps;
+let i = 0;
+
+const frameElement = document.getElementById("frame");
+
+function nextFrame() {
+  frameElement.textContent = frames[i];
+  i = (i + 1) % frames.length;
+}
+
+setInterval(nextFrame, delay);
+</script>
+
+</body>
+</html>
